@@ -1,5 +1,5 @@
 {
   "brokenArtifacts": {
-    "10048": "GetVehicleNumberPlateText server native broken, will cause issues with scripts involving vehicles"
+    "10191": "GetVehicleNumberPlateText server native broken, will cause issues with scripts involving vehicles"
   }
 }
