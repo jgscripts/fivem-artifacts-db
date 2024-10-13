@@ -1,11 +1,13 @@
 import artifactDb from "@/db.json";
 
 const GITHUB_REPO_TAGS = "https://api.github.com/repos/citizenfx/fivem/tags";
-const DOWNLOAD_LINK_BASE =
-  "https://runtime.fivem.net/artifacts/fivem/build_server_windows/master";
-const DOWNLOAD_FILE = "server.zip";
+const DOWNLOAD_LINK_BASE = "https://runtime.fivem.net/artifacts/fivem/";
+const WINDOWS_MASTER = "build_server_windows/master";
+const WINDOWS_FILE = "server.zip";
+const LINUX_MASTER = "build_proot_linux/master";
+const LINUX_FILE = "fx.tar.xz";
 
-type ReturnType = { recommendedArtifact: string; downloadLink: string } | false;
+type ReturnType = { recommendedArtifact: string; windowsDownloadLink: string; linuxDownloadLink: string } | false;
 
 export async function getRecommendedArtifact(): Promise<ReturnType> {
   try {
@@ -38,11 +40,13 @@ export async function getRecommendedArtifact(): Promise<ReturnType> {
     }
 
     // Generate download link
-    const downloadLink = `${DOWNLOAD_LINK_BASE}/${recommendedArtifact.artifact}-${recommendedArtifact.sha}/${DOWNLOAD_FILE}`;
+    const windowsDownloadLink = `${DOWNLOAD_LINK_BASE}/${WINDOWS_MASTER}/${recommendedArtifact.artifact}-${recommendedArtifact.sha}/${WINDOWS_FILE}`;
+    const linuxDownloadLink = `${DOWNLOAD_LINK_BASE}/${LINUX_MASTER}/${recommendedArtifact.artifact}-${recommendedArtifact.sha}/${LINUX_FILE}`;
 
     return {
       recommendedArtifact: recommendedArtifact.artifact,
-      downloadLink,
+      windowsDownloadLink,
+      linuxDownloadLink
     };
   } catch {
     return false;
