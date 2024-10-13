@@ -10,4 +10,4 @@ If you want to make an improvement to the site itself, feel free to submit a PR 
 
 ## Sharing
 
-You can share this site with people by sending them a link to: [Put URL here when live]
+You can share this site with people to help them download the right artifacts here: https://artifacts.jgscripts.com/
