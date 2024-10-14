@@ -8,6 +8,10 @@ Make a pull request (PR) to update [`db.json`](https://github.com/jgscripts/five
 
 If you are not comfortable making a PR, could you also [create an issue](https://github.com/jgscripts/fivem-artifacts-db/issues) or send an email to [hello@jgscripts.com](mailto:hello@jgscripts.com) with details of the artifact bug. We will review your report and update the database.
 
+Please provide some evidence which shows what is broken - a link to a Cfx GitHub issue, screenshots or error logs would be ideal. 
+
+## Website
+
 If you want to make an improvement to the site itself, feel free to submit a PR with that too :)
 
 ## Sharing
