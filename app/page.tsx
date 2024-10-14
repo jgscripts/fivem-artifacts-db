@@ -42,12 +42,12 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="flex justify-between mb-2">
-        <p className=" text-xs text-gray-400">Artifacts with known issues:</p>
+      <div className="flex justify-between mb-2 text-xs">
+        <p className="text-gray-400">Artifacts with reported issues:</p>
         <a
           href="https://github.com/jgscripts/fivem-artifacts-db/tree/main?tab=readme-ov-file#contributing"
           target="_blank"
-          className="text-xs underline text-blue-500 text-right"
+          className="underline text-blue-500 text-right"
         >
           Know an issue? Let us know!
         </a>
