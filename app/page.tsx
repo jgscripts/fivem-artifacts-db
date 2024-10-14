@@ -2,8 +2,13 @@ import { getRecommendedArtifact } from "@/actions/fivem";
 import artifactDb from "@/db.json";
 
 export default async function Home() {
-  const data: { downloadLink: string; recommendedArtifact: string } | false =
-    await getRecommendedArtifact();
+  const data:
+    | {
+        windowsDownloadLink: string;
+        linuxDownloadLink: string;
+        recommendedArtifact: string;
+      }
+    | false = await getRecommendedArtifact();
 
   if (!data)
     return (
@@ -23,9 +28,18 @@ export default async function Home() {
             {data.recommendedArtifact}
           </code>
         </p>
-        <a href={data.downloadLink} className="text-blue-500 underline">
-          Download
-        </a>
+        <div className="flex gap-2">
+          <p>Download:</p>
+          <a
+            href={data.windowsDownloadLink}
+            className="text-blue-500 underline"
+          >
+            Windows
+          </a>
+          <a href={data.linuxDownloadLink} className="text-blue-500 underline">
+            Linux
+          </a>
+        </div>
       </div>
 
       <div className="flex justify-between mb-2">
