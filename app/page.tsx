@@ -1,5 +1,6 @@
 import { getRecommendedArtifacts, type RecommendedArtifact } from "@/actions/fivem";
 import artifactDb from "@/db.json";
+import { WindowsIcon, LinuxIcon } from "./icons";
 
 export default async function Home() {
   const recommendedArtifacts: RecommendedArtifact[] | false = await getRecommendedArtifacts();
@@ -30,10 +31,18 @@ export default async function Home() {
             </code>
           </p>
 
-          <div className="flex gap-2">
-            <p>Download: </p>
-            <a href={recommendedArtifacts[0].downloadLinks.windows} className="underline text-blue-500">Windows</a>
-            <a href={recommendedArtifacts[0].downloadLinks.linux} className="underline text-blue-500">Linux</a>
+          <div className="flex items-center mt-2">
+            <p className="mr-2">Download</p>
+
+            <div className="gap-2 flex">
+              <a href={recommendedArtifacts[0].downloadLinks.windows} className="w-8 h-8 bg-gray-50 hover:bg-gray-300 transition-colors flex items-center justify-center">
+                <WindowsIcon className="w-full h-full p-1 transition-[display] group-hover:hidden" />
+              </a>
+
+              <a href={recommendedArtifacts[0].downloadLinks.linux} className="w-8 h-8 bg-gray-50 hover:bg-gray-300 transition-colors flex items-center justify-center">
+                <LinuxIcon className="w-full h-full p-1" />
+              </a>
+            </div>
           </div>
         </div>
 
@@ -47,8 +56,13 @@ export default async function Home() {
               </code>
 
               <div className="gap-2 flex">
-                <a href={artifact.downloadLinks.windows} className="underline text-blue-500">Windows</a>
-                <a href={artifact.downloadLinks.linux} className="underline text-blue-500">Linux</a>
+                <a href={artifact.downloadLinks.windows} className="w-6 h-6 bg-gray-50 hover:bg-gray-300 transition-colors flex items-center justify-center">
+                  <WindowsIcon className="w-full h-full p-1 transition-[display] group-hover:hidden" />
+                </a>
+
+                <a href={artifact.downloadLinks.linux} className="w-6 h-6 bg-gray-50 hover:bg-gray-300 transition-colors flex items-center justify-center">
+                  <LinuxIcon className="w-full h-full p-1" />
+                </a>
               </div>
             </div>
           ))}
