@@ -3,6 +3,7 @@
     "8509": "State bags not replicated to clients",
     "10072": "Crashing when players join",
     "10191": "GetVehicleNumberPlateText server native broken, will cause issues with scripts involving vehicles",
+    "10300": "Can't store vehicles. 'Attempt to index a nil value'",
     "10309": "Can't store vehicles. 'Attempt to index a nil value'"
   }
 }
