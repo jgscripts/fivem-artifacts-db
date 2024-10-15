@@ -1,15 +1,16 @@
 import artifactDb from "@/db.json";
 
 const GITHUB_REPO_TAGS = "https://api.github.com/repos/citizenfx/fivem/tags";
-const DOWNLOAD_LINK_BASE = "https://runtime.fivem.net/artifacts/fivem/";
+const DOWNLOAD_LINK_BASE = "https://runtime.fivem.net/artifacts/fivem";
 const WINDOWS_MASTER = "build_server_windows/master";
 const WINDOWS_FILE = "server.zip";
 const LINUX_MASTER = "build_proot_linux/master";
 const LINUX_FILE = "fx.tar.xz";
 
-type ReturnType = { recommendedArtifact: string; windowsDownloadLink: string; linuxDownloadLink: string } | false;
+export type RecommendedArtifact = { artifact: string; sha: string, downloadLinks: { windows: string; linux: string }, isLatest?: boolean };
+type ReturnType = RecommendedArtifact[] | false;
 
-export async function getRecommendedArtifact(): Promise<ReturnType> {
+export async function getRecommendedArtifacts(): Promise<ReturnType> {
   try {
     const brokenArtifacts: { [key: string]: string } =
       artifactDb.brokenArtifacts;
@@ -30,24 +31,24 @@ export async function getRecommendedArtifact(): Promise<ReturnType> {
       }));
 
     // Go through the most recent artifacts and find one without an entry in brokenArtifacts
-    let recommendedArtifact: { artifact: string; sha: string } =
-      latestReleases[0];
-    for (const artifact of latestReleases) {
+    let recommendedArtifacts: RecommendedArtifact[] = [];
+
+    for (const [index, artifact] of latestReleases.entries()) {
       if (!brokenArtifacts[artifact.artifact]) {
-        recommendedArtifact = artifact;
-        break;
+        recommendedArtifacts.push({
+          ...artifact,
+          isLatest: index === 0,
+          downloadLinks: {
+            windows: `${DOWNLOAD_LINK_BASE}/${WINDOWS_MASTER}/${artifact.artifact}-${artifact.sha}/${WINDOWS_FILE}`,
+            linux: `${DOWNLOAD_LINK_BASE}/${LINUX_MASTER}/${artifact.artifact}-${artifact.sha}/${LINUX_FILE}`,
+          },
+        });
+
+        if (recommendedArtifacts.length === 3) break;
       }
     }
 
-    // Generate download link
-    const windowsDownloadLink = `${DOWNLOAD_LINK_BASE}/${WINDOWS_MASTER}/${recommendedArtifact.artifact}-${recommendedArtifact.sha}/${WINDOWS_FILE}`;
-    const linuxDownloadLink = `${DOWNLOAD_LINK_BASE}/${LINUX_MASTER}/${recommendedArtifact.artifact}-${recommendedArtifact.sha}/${LINUX_FILE}`;
-
-    return {
-      recommendedArtifact: recommendedArtifact.artifact,
-      windowsDownloadLink,
-      linuxDownloadLink
-    };
+    return recommendedArtifacts;
   } catch {
     return false;
   }
