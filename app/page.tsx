@@ -2,7 +2,13 @@ import { getRecommendedArtifact } from "@/actions/fivem";
 import artifactDb from "@/db.json";
 
 export default async function Home() {
-  const data = await getRecommendedArtifact();
+  const data:
+    | {
+      windowsDownloadLink: string;
+      linuxDownloadLink: string;
+      recommendedArtifact: string;
+    }
+    | false = await getRecommendedArtifact();
 
   if (!data)
     return (
