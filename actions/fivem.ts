@@ -7,16 +7,43 @@ const WINDOWS_FILE = "server.zip";
 const LINUX_MASTER = "build_proot_linux/master";
 const LINUX_FILE = "fx.tar.xz";
 
-type ReturnType = { recommendedArtifact: string; windowsDownloadLink: string; linuxDownloadLink: string } | false;
+type ReturnType =
+  | {
+      recommendedArtifact: string;
+      windowsDownloadLink: string;
+      linuxDownloadLink: string;
+    }
+  | false;
+
+function getAllBrokenArtifacts(): { [key: string]: string } {
+  const brokenArtifacts = JSON.parse(
+    JSON.stringify(artifactDb.brokenArtifacts)
+  ); // it's a really fast deep clone, it looks ugly i know
+
+  for (const [artifact, reason] of Object.entries(brokenArtifacts)) {
+    if (artifact.includes("-")) {
+      const artifactRange = artifact.split("-").map((a) => parseInt(a));
+
+      for (let i = artifactRange[0]; i <= artifactRange[1]; i++) {
+        brokenArtifacts[i.toString()] = reason;
+      }
+
+      delete brokenArtifacts[artifact];
+    }
+  }
+
+  return brokenArtifacts;
+}
 
 export async function getRecommendedArtifact(): Promise<ReturnType> {
   try {
-    const brokenArtifacts: { [key: string]: string } =
-      artifactDb.brokenArtifacts;
+    const brokenArtifacts = getAllBrokenArtifacts();
     if (!brokenArtifacts) return false;
 
     // Get git commit sha from tag
-    const gitReq = await fetch(GITHUB_REPO_TAGS);
+    const gitReq = await fetch(GITHUB_REPO_TAGS, {
+      next: { revalidate: 86400 },
+    });
     if (!gitReq.ok) return false;
     const gitData: { name: string; commit: { sha: string } }[] =
       await gitReq.json();
@@ -46,7 +73,7 @@ export async function getRecommendedArtifact(): Promise<ReturnType> {
     return {
       recommendedArtifact: recommendedArtifact.artifact,
       windowsDownloadLink,
-      linuxDownloadLink
+      linuxDownloadLink,
     };
   } catch {
     return false;

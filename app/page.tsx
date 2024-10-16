@@ -23,7 +23,9 @@ export default async function Home() {
 
       <div className="border-green-500 border-2 p-3 px-4 mb-5 text-lg">
         <p>
-          <span>Latest artifact with no reported issues</span>
+          <span>
+            Latest<sup>*</sup> artifact with no reported issues
+          </span>
           <code className="bg-green-500 p-1 px-2 ml-2 text-white font-bold">
             {data.recommendedArtifact}
           </code>
@@ -40,6 +42,11 @@ export default async function Home() {
             Linux
           </a>
         </div>
+      </div>
+
+      <div className="text-xs text-gray-400 my-4">
+        * Note: There is a wait period of ~1 day before the very newest artifact
+        is recommended, to allow time for issues to be reported.
       </div>
 
       <div className="flex justify-between mb-2 text-xs">
@@ -65,8 +72,6 @@ export default async function Home() {
             </code>
           </div>
         ))}
-
-      <div></div>
     </div>
   );
 }
