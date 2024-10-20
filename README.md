@@ -10,10 +10,12 @@ If you are not comfortable making a PR, could you also [create an issue](https:/
 
 Please provide some evidence which shows what is broken - a link to a Cfx GitHub issue, screenshots or error logs would be ideal. 
 
-## Website
+## API
 
-If you want to make an improvement to the site itself, feel free to submit a PR with that too :)
+Looking to integrate this into a script, updater or other service? You can consume the website in JSON format here: https://artifacts.jgscripts.com/json
 
-## Sharing
+## Website & Sharing
 
 You can share this site with people to help them download the right artifacts here: https://artifacts.jgscripts.com/
+
+If you want to make an improvement to the site itself, feel free to submit a PR with that too :)
