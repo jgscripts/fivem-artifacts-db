@@ -1,5 +1,5 @@
 import { getRecommendedArtifact } from "@/actions/fivem";
-import { brokenArtifacts } from "@/db.json";
+import db from "@/db.json";
 
 type ResponseData = {
   error?: boolean;
@@ -18,7 +18,7 @@ export async function GET() {
       msg: "Could not fetch data - please try again later.",
     });
 
-  data.brokenArtifacts = brokenArtifacts;
+  data.brokenArtifacts = db.brokenArtifacts;
 
   return Response.json(data);
 }
