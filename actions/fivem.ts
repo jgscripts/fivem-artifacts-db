@@ -1,7 +1,7 @@
 import artifactDb from "@/db.json";
 
 const GITHUB_REPO_TAGS = "https://api.github.com/repos/citizenfx/fivem/tags";
-const DOWNLOAD_LINK_BASE = "https://runtime.fivem.net/artifacts/fivem/";
+const DOWNLOAD_LINK_BASE = "https://runtime.fivem.net/artifacts/fivem";
 const WINDOWS_MASTER = "build_server_windows/master";
 const WINDOWS_FILE = "server.zip";
 const LINUX_MASTER = "build_proot_linux/master";
