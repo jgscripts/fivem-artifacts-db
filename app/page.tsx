@@ -4,10 +4,10 @@ import artifactDb from "@/db.json";
 export default async function Home() {
   const data:
     | {
-      windowsDownloadLink: string;
-      linuxDownloadLink: string;
-      recommendedArtifact: string;
-    }
+        windowsDownloadLink: string;
+        linuxDownloadLink: string;
+        recommendedArtifact: string;
+      }
     | false = await getRecommendedArtifact();
 
   if (!data)
@@ -24,7 +24,8 @@ export default async function Home() {
       <div className="border border-zinc-800 bg-zinc-900 p-3 px-4 mb-5 text-lg rounded text-center">
         <p>
           <span>
-            Latest<sup className="text-blue-400 font-bold">*</sup> artifact with no reported issues
+            Latest<sup className="text-blue-400 font-bold">*</sup> artifact with
+            no reported issues
           </span>
           <code className="bg-green-500 p-1 px-2 ml-2 font-bold rounded font-sans text-base text-white">
             {data.recommendedArtifact}
@@ -32,10 +33,16 @@ export default async function Home() {
         </p>
         <div className="flex gap-2 justify-center text-base">
           <p className="font-semibold">Download:</p>
-          <a href={data.windowsDownloadLink} className="text-blue-500 hover:underline">
+          <a
+            href={data.windowsDownloadLink}
+            className="text-blue-500 hover:underline"
+          >
             Windows
           </a>
-          <a href={data.linuxDownloadLink} className="text-blue-500 hover:underline">
+          <a
+            href={data.linuxDownloadLink}
+            className="text-blue-500 hover:underline"
+          >
             Linux
           </a>
         </div>
@@ -45,7 +52,8 @@ export default async function Home() {
         <span className="bg-blue-500 font-semibold px-0.5 rounded-s-full mr-1 border border-opacity-30 border-zinc-900">
           *Note:
         </span>
-        There is a wait period of ~1 day before the very newest artifact is recommended, to allow time for issues to be reported.
+        There is a wait period of up to 1 day before the very newest artifact is
+        recommended, to allow time for issues to be reported.
       </div>
 
       <div className="flex justify-between mt-10 mb-2 text-xs">
@@ -62,12 +70,15 @@ export default async function Home() {
       {Object.entries(artifactDb.brokenArtifacts)
         .sort((a, b) => parseInt(b[0]) - parseInt(a[0]))
         .map(([key, value]) => (
-          <div key={key} className="border border-zinc-800 p-2 mb-3 bg-zinc-900 rounded cursor-pointer">
+          <div
+            key={key}
+            className="border border-zinc-800 p-2 mb-3 bg-zinc-900 rounded cursor-pointer"
+          >
             <code className="leading-5">
-              <span className="text-xs font-sans bg-red-500 p-1 px-1 mr-1 font-bold rounded border border-opacity-30 border-zinc-900">
+              <span className="text-xs font-sans bg-red-500 p-1 px-1 mr-1 font-bold rounded border border-opacity-30 border-zinc-900 whitespace-nowrap">
                 {key}
               </span>
-              <span className="text-sm font-sans">{value}</span>
+              <span className="text-sm font-sans break-words">{value}</span>
             </code>
           </div>
         ))}
