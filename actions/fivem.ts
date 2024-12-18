@@ -36,13 +36,15 @@ function getAllBrokenArtifacts(): { [key: string]: string } {
 }
 
 export async function getRecommendedArtifact(): Promise<ReturnType> {
+  const CACHE_KEEP_SECS = 604800;
+
   try {
     const brokenArtifacts = getAllBrokenArtifacts();
     if (!brokenArtifacts) return false;
 
     // Get git commit sha from tag
     const gitReq = await fetch(GITHUB_REPO_TAGS, {
-      next: { revalidate: 86400 },
+      next: { revalidate: CACHE_KEEP_SECS },
     });
     if (!gitReq.ok) return false;
     const gitData: { name: string; commit: { sha: string } }[] =
