@@ -8,11 +8,29 @@ Make a pull request (PR) to update [`db.json`](https://github.com/jgscripts/five
 
 If you are not comfortable making a PR, could you also [create an issue](https://github.com/jgscripts/fivem-artifacts-db/issues) or send an email to [hello@jgscripts.com](mailto:hello@jgscripts.com) with details of the artifact bug. We will review your report and update the database.
 
-Please provide some evidence which shows what is broken - a link to a Cfx GitHub issue, screenshots or error logs would be ideal. 
+Please provide some evidence which shows what is broken - a link to a Cfx GitHub issue, screenshots or error logs would be ideal.
 
 ## API
 
-Looking to integrate this into a script, updater or other service? You can consume the website in JSON format here: https://artifacts.jgscripts.com/json
+- **`/check?artifact=XXXX`: Check specific artifact to see if it has a reported issue**
+
+  **Response**
+
+  | **Name** | **Type**                    |
+  | -------- | --------------------------- |
+  | `status` | `"OK"` or `"BROKEN"`        |
+  | `reason` | `string` (only if "BROKEN") |
+
+- **`/json`: Full site in JSON format (all broken artifacts, download links, recommend stable artifacts)**
+
+  **Response**
+
+  | **Name**              | **Type** |
+  | --------------------- | -------- |
+  | `recommendedArtifact` | `string` |
+  | `windowsDownloadLink` | `string` |
+  | `linuxDownloadLink`   | `string` |
+  | `brokenArtifacts`     | `object` |
 
 ## Website & Sharing
 

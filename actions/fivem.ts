@@ -15,7 +15,7 @@ type ReturnType =
     }
   | false;
 
-function getAllBrokenArtifacts(): { [key: string]: string } {
+export function getAllBrokenArtifacts(): { [key: string]: string } {
   const brokenArtifacts = JSON.parse(
     JSON.stringify(artifactDb.brokenArtifacts)
   ); // it's a really fast deep clone, it looks ugly i know
