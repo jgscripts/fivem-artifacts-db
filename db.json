@@ -3,6 +3,8 @@
     "8509": "State bags not replicated to clients",
     "10072": "Crashing when players join",
     "10191": "GetVehicleNumberPlateText server native broken, will cause issues with scripts involving vehicles",
-    "10268-10309": "sv_experimentalNetGameEventHandler enabled by default; can cause server crashing and reports of issues downgrading after upgrading"
+    "10268-10309": "sv_experimentalNetGameEventHandler enabled by default; can cause server crashing and reports of issues downgrading after upgrading",
+    "10930": "Failed build, ignore",
+    "12078-12083": "Some clients will fail to connect with 'ReadBulk of header failed' error"
   }
 }
