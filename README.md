@@ -32,6 +32,12 @@ Please provide some evidence which shows what is broken - a link to a Cfx GitHub
   | `linuxDownloadLink`   | `string` |
   | `brokenArtifacts`     | `object` |
 
+## FiveM Resource
+
+Want to check your FXServer version hasn't had reported issues every time you start your server? I've written a small standalone script that does just that: https://github.com/jgscripts/jg-artifactcheck
+
+You can steal the code to implement in your resources, or use it directly.
+
 ## Website & Sharing
 
 You can share this site with people to help them download the right artifacts here: https://artifacts.jgscripts.com/
