@@ -7,6 +7,7 @@
     "10930": "Failed build, ignore",
     "12078-12083": "Some clients will fail to connect with 'ReadBulk of header failed' error",
     "12078-12135": "[UNFIXED] SetPlayerModel may cause SIGSEGV crashes on some clients due to changes in player handling. 12031 and below works fine.",
-    "12151": "[b3407 only] Crashing if using newest title update (TU)"
+    "12151": "[b3407 only] Crashing if using newest title update (TU)",
+    "12160": "Cannot use entity native calls in entityRemoved"
   }
 }
