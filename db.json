@@ -8,6 +8,7 @@
     "12078-12083": "Some clients will fail to connect with 'ReadBulk of header failed' error",
     "12092-12135": "SetPlayerModel may cause SIGSEGV crashes on some clients due to changes in player handling. 12031 and below works fine.",
     "12151": "Crashing if using newest title update (TU)",
-    "12160-12165": "Cannot use entity native calls in entityRemoved"
+    "12160-12165": "Cannot use entity native calls in entityRemoved",
+    "12255": "Unconfirmed, but several reports of server-side issues that don't persist when downgrading; best to avoid" 
   }
 }
