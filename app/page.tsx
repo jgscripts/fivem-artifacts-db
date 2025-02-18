@@ -64,8 +64,8 @@ export default async function Home() {
         <span className="bg-blue-500 font-semibold px-0.5 rounded-s-full mr-1 border border-opacity-30 border-zinc-900">
           *Note:
         </span>
-        There is a wait period of up to 1 week before the very newest artifact
-        is recommended, to allow time for issues to be reported.
+        The very newest artifact will not be recommended immediately due to a
+        short wait period, to allow time for issues to be reported.
       </div>
 
       <div className="flex justify-between mt-10 mb-2 text-xs">

@@ -10,6 +10,8 @@
     "12151": "Crashing if using newest title update (TU)",
     "12160-12165": "Cannot use entity native calls in entityRemoved",
     "12255": "Unconfirmed, but several reports of server-side issues that don't persist when downgrading; best to avoid",
-    "12509": "Failed build, ignore"
+    "12509": "Failed build, ignore",
+    "12651": "Failed Linux build, ignore",
+    "12767": "os.date() appends null terminator; can break Lua scripts"
   }
 }
