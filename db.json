@@ -12,6 +12,7 @@
     "12255": "Unconfirmed, but several reports of server-side issues that don't persist when downgrading; best to avoid",
     "12509": "Failed build, ignore",
     "12651": "Failed Linux build, ignore",
-    "12767": "os.date() appends null terminator; can break Lua scripts"
+    "12767": "os.date() appends null terminator; can break Lua scripts",
+    "12913-12932": "Causes a crash when restarting Node.js 22"
   }
 }
