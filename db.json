@@ -13,6 +13,7 @@
     "12509": "Failed build, ignore",
     "12651": "Failed Linux build, ignore",
     "12767": "os.date() appends null terminator; can break Lua scripts",
-    "12913-12932": "Causes a crash when restarting Node.js 22"
+    "12913-12932": "Causes a crash when restarting Node.js 22",
+    "12913-99999": "Calling an export between JS resources causes a SIGSEGV crash - probably just avoid for now unless you want to use oxmysql v2.13. FiveM plz fix"
   }
 }
