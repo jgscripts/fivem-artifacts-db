@@ -1,6 +1,7 @@
 import artifactDb from "@/db.json";
 
-const GITHUB_REPO_TAGS = "https://api.github.com/repos/citizenfx/fivem/tags";
+const GITHUB_REPO_TAGS =
+  "https://api.github.com/repos/citizenfx/fivem/tags?per_page=50";
 const DOWNLOAD_LINK_BASE = "https://runtime.fivem.net/artifacts/fivem";
 const WINDOWS_MASTER = "build_server_windows/master";
 const WINDOWS_FILE = "server.zip";
@@ -60,6 +61,7 @@ export async function getRecommendedArtifact(): Promise<ReturnType> {
     let recommendedArtifact: { artifact: string; sha: string } =
       latestReleases[0];
     for (const artifact of latestReleases) {
+      console.log(artifact.artifact, brokenArtifacts[artifact.artifact]);
       if (!brokenArtifacts[artifact.artifact]) {
         recommendedArtifact = artifact;
         break;
