@@ -61,7 +61,6 @@ export async function getRecommendedArtifact(): Promise<ReturnType> {
     let recommendedArtifact: { artifact: string; sha: string } =
       latestReleases[0];
     for (const artifact of latestReleases) {
-      console.log(artifact.artifact, brokenArtifacts[artifact.artifact]);
       if (!brokenArtifacts[artifact.artifact]) {
         recommendedArtifact = artifact;
         break;
