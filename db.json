@@ -14,6 +14,7 @@
     "12651": "Failed Linux build, ignore",
     "12767": "os.date() appends null terminator; can break Lua scripts",
     "12913-12932": "Causes a crash when restarting Node.js 22",
-    "12933-13045": "Still crashes (sometimes) when restarting resources due to Node.js 22"
+    "12933-13045": "Still crashes (sometimes) when restarting resources due to Node.js 22",
+    "13079": "Failed Linux build (works OK if using Windows!)"
   }
 }
