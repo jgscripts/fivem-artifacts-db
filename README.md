@@ -43,3 +43,9 @@ You can steal the code to implement in your resources, or use it directly.
 You can share this site with people to help them download the right artifacts here: https://artifacts.jgscripts.com/
 
 If you want to make an improvement to the site itself, feel free to submit a PR with that too :)
+
+## Legal
+
+The code and all database data within this repo is released into the public domain. You can read the full license here: [LICENSE](./LICENSE).
+
+"FiveM" is a copyright and registered trademark of Take-Two Interactive Software, Inc.
