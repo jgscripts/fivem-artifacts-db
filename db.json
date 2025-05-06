@@ -17,6 +17,7 @@
     "12933-13045": "Still crashes (sometimes) when restarting resources due to Node.js 22",
     "13079": "Failed Linux build (works OK if using Windows!)",
     "13380-13458": "Server crashing due to integer encoding (PR#3235)",
-    "13759-13890": "Mumble (voice) external connections blocked by default"
+    "13759-13890": "Mumble (voice) external connections blocked by default",
+    "14583": "Crash when using the new onEntityBucketChange"
   }
 }
