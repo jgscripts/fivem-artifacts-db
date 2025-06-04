@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "FiveM Artifacts DB",
+  title: "FiveM 构建版本数据库",
   description:
-    "Find and download the latest recommended artifacts, and avoid artifacts with known issues",
+    "查找并下载最新推荐的构建版本，避免使用有已知问题的版本",
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <head>
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />

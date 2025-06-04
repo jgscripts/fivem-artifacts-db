@@ -15,7 +15,7 @@ export async function GET() {
   if (!data)
     return Response.json({
       error: true,
-      msg: "Could not fetch data - please try again later.",
+      msg: "无法获取数据 - 请稍后重试。",
     });
 
   data.brokenArtifacts = db.brokenArtifacts;

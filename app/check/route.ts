@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
     return Response.json(
       {
         error: true,
-        msg: "You have not provided an artifact to check",
+        msg: "您未提供要检查的构建版本",
       },
       { status: 400 }
     );

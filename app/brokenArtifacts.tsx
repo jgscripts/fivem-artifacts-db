@@ -135,7 +135,7 @@ const BrokenArtifacts = () => {
         <input
           type="search"
           className="flex-1 bg-transparent border-none outline-none !text-sm"
-          placeholder="Search for an artifact"
+          placeholder="搜索构建版本"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           maxLength={10}
@@ -146,15 +146,15 @@ const BrokenArtifacts = () => {
       {searchQuery && (
         <div className="mb-3 text-xs text-gray-400 transition-opacity duration-300">
           {filteredArtifacts.length > 0 
-            ? `Found ${filteredArtifacts.length} result${filteredArtifacts.length !== 1 ? 's' : ''}`
-            : 'No results found'
+            ? `找到 ${filteredArtifacts.length} 个结果`
+            : '未找到结果'
           }
         </div>
       )}
 
       {!searchQuery && filteredArtifacts.length > 0 && (
         <div className="mb-3 text-xs text-gray-400 transition-opacity duration-300">
-          Showing {startIndex + 1}-{Math.min(endIndex, filteredArtifacts.length)} of {filteredArtifacts.length} artifacts
+          显示第 {startIndex + 1}-{Math.min(endIndex, filteredArtifacts.length)} 项，共 {filteredArtifacts.length} 个构建版本
         </div>
       )}
 
@@ -165,11 +165,11 @@ const BrokenArtifacts = () => {
               OK
             </span>
             <span className="text-sm font-sans break-words">
-              Artifact{" "}
+              构建版本{" "}
               <strong className="text-green-500">
                 &quot;{searchQuery}&quot;
               </strong>{" "}
-              has not had any reported issues.
+              暂无已知问题。
             </span>
           </div>
         </div>
@@ -214,7 +214,7 @@ const BrokenArtifacts = () => {
           {/* Page info */}
           {totalPages > 1 && (
             <div className="text-center text-xs text-gray-400 mt-3 transition-opacity duration-300">
-              Page {currentPage} of {totalPages}
+              第 {currentPage} 页，共 {totalPages} 页
             </div>
           )}
         </>
