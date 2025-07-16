@@ -19,6 +19,7 @@
     "13380-13458": "Server crashing due to integer encoding (PR#3235)",
     "13759-13890": "Mumble (voice) external connections blocked by default",
     "14583-14716": "Crash when using the new onEntityBucketChange",
-    "14583-14862": "Timeouts due to latency units being in nanoseconds"
+    "14583-14862": "Timeouts due to latency units being in nanoseconds",
+    "16276": "Multiple reports of issues loading JS within resources"
   }
 }
