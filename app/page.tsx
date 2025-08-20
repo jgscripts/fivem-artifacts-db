@@ -71,7 +71,7 @@ export default async function Home() {
       <div className="flex justify-between mt-10 mb-2 text-xs">
         <p className="text-gray-400">Artifacts with reported issues:</p>
         <a
-          href="https://jgscripts.com/artifact-report"
+          href="https://jgscripts.atlassian.net/jira/core/form/48da343c-5a4b-4bed-8c09-ef8681035299?atlOrigin=eyJpIjoiYzc1MGU3NTk4MDJjNGJkODg3NjZiNzY1NTM1M2YxN2YiLCJwIjoiaiJ9"
           target="_blank"
           className="underline text-blue-500"
         >
