@@ -1,6 +1,8 @@
 import { getRecommendedArtifact } from "@/actions/fivem";
 import db from "@/db.json";
 
+export const revalidate = 432000; // 5 days
+
 type ResponseData = {
   error?: boolean;
   msg?: string;

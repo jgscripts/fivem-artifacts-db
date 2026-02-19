@@ -43,7 +43,7 @@ export async function getRecommendedArtifact(): Promise<ReturnType> {
 
     // Get git commit sha from tag
     const gitReq = await fetch(GITHUB_REPO_TAGS, {
-      next: { revalidate: 86400 },
+      next: { revalidate: 432000 },
     });
     if (!gitReq.ok) return false;
     const gitData: { name: string; commit: { sha: string } }[] =

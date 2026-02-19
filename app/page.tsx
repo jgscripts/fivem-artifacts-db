@@ -1,6 +1,8 @@
 import { getRecommendedArtifact } from "@/actions/fivem";
 import BrokenArtifacts from "./brokenArtifacts";
 
+export const revalidate = 432000; // 5 days
+
 export default async function Home() {
   const data:
     | {
