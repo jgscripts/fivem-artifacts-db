@@ -57,12 +57,12 @@ Returns all broken artifacts, download links, and the recommended stable artifac
 }
 ```
 
-| Field                 | Type                                   | Description                                        |
-| --------------------- | -------------------------------------- | -------------------------------------------------- |
-| `recommendedArtifact` | `string`                               | Latest artifact with no reported issues             |
-| `windowsDownloadLink` | `string`                               | Direct download URL for Windows server build        |
-| `linuxDownloadLink`   | `string`                               | Direct download URL for Linux server build          |
-| `brokenArtifacts`     | `{artifact: string, reason: string}[]` | Sorted array of artifacts with known issues         |
+| Field                 | Type                                   | Description                                  |
+| --------------------- | -------------------------------------- | -------------------------------------------- |
+| `recommendedArtifact` | `string`                               | Latest artifact with no reported issues      |
+| `windowsDownloadLink` | `string`                               | Direct download URL for Windows server build |
+| `linuxDownloadLink`   | `string`                               | Direct download URL for Linux server build   |
+| `brokenArtifacts`     | `{artifact: string, reason: string}[]` | Sorted array of artifacts with known issues  |
 
 > **Note:** A legacy endpoint is available at `GET /json` which returns `brokenArtifacts` as an object instead of an array. New integrations should use `/jsonv2`.
 
