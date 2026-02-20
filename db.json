@@ -22,6 +22,7 @@
     "14583-14862": "Timeouts due to latency units being in nanoseconds",
     "16276": "Multiple reports of issues loading JS within resources",
     "17462": "Failed build, ignore",
-    "21547": "Multiple (unconfirmed) reports of server-sided natives throwing errors or causing crashes; best to avoid"
+    "21547": "Multiple (unconfirmed) reports of server-sided natives throwing errors or causing crashes; best to avoid",
+    "25987-25988": "Node.js sandboxing seems to be causing issues for people - best to avoid for now"
   }
 }
