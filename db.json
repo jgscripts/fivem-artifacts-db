@@ -24,6 +24,7 @@
     "17462": "Failed build, ignore",
     "21547": "Multiple (unconfirmed) reports of server-sided natives throwing errors or causing crashes; best to avoid",
     "25943": "Failed build",
-    "25963-25988": "Node.js sandboxing seems to be causing issues for people - best to avoid for now"
+    "25963-25988": "Node.js sandboxing seems to be causing issues for people - best to avoid for now",
+    "26261-27417": "Issues with building Yarn resources on some Linux servers"
   }
 }
