@@ -26,6 +26,7 @@
     "25943": "Failed build",
     "25839-25988": "Node.js sandboxing seems to be causing issues for people - best to avoid for now",
     "26261-27715": "Issues with building Yarn resources on some Linux servers",
-    "27722": "Yarn fails to exit cleanly on Windows"
+    "27722": "Yarn fails to exit cleanly on Windows",
+    "28626": "Issues with packet loss/timeouts"
   }
 }
