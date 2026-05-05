@@ -1,16 +1,30 @@
-import { getRecommendedArtifact } from "@/actions/fivem";
+import {
+  getFivemOfficialRecommended,
+  getRecommendedArtifact,
+} from "@/actions/fivem";
 import BrokenArtifacts from "./brokenArtifacts";
 
 export const revalidate = 432000; // 5 days
 
 export default async function Home() {
-  const data:
-    | {
-        windowsDownloadLink: string;
-        linuxDownloadLink: string;
-        recommendedArtifact: string;
-      }
-    | false = await getRecommendedArtifact();
+  const [data, fivemRecommended]: [
+    (
+      | {
+          windowsDownloadLink: string;
+          linuxDownloadLink: string;
+          recommendedArtifact: string;
+        }
+      | false
+    ),
+    {
+      version: string;
+      windowsDownload: string | null;
+      linuxDownload: string | null;
+    } | null,
+  ] = await Promise.all([
+    getRecommendedArtifact(),
+    getFivemOfficialRecommended(),
+  ]);
 
   if (!data)
     return (
@@ -68,6 +82,65 @@ export default async function Home() {
         </span>
         The very newest artifact will not be recommended immediately due to a
         short wait period, to allow time for issues to be reported.
+      </div>
+
+      <div className="text-xs my-4 border border-red-900 p-2.5 rounded bg-red-950/40">
+        <span className="bg-red-500 font-semibold px-0.5 rounded-s-full mr-1 border border-opacity-30 border-zinc-900">
+          *Important:
+        </span>
+        Using the latest artifacts is always risky. Never run the latest
+        versions on a server that is in active production. Latest builds are
+        generally not broadly tested and may lead to unknown issues. Always use
+        FiveM&apos;s officially{" "}
+        <span className="font-semibold">recommended</span> version
+        {fivemRecommended ? (
+          <>
+            {" "}
+            (the safest, most stable recommended version:{" "}
+            {fivemRecommended.windowsDownload ? (
+              <a
+                href={fivemRecommended.windowsDownload}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-green-500/90 hover:bg-green-500 px-1.5 py-0.5 rounded font-sans text-white font-bold no-underline"
+              >
+                {fivemRecommended.version}
+              </a>
+            ) : (
+              <code className="bg-green-500/90 px-1.5 py-0.5 rounded font-sans text-white font-bold">
+                {fivemRecommended.version}
+              </code>
+            )}
+            {fivemRecommended.windowsDownload || fivemRecommended.linuxDownload
+              ? " — Download: "
+              : null}
+            {fivemRecommended.windowsDownload ? (
+              <a
+                href={fivemRecommended.windowsDownload}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:underline"
+              >
+                Windows
+              </a>
+            ) : null}
+            {fivemRecommended.windowsDownload && fivemRecommended.linuxDownload
+              ? " · "
+              : null}
+            {fivemRecommended.linuxDownload ? (
+              <a
+                href={fivemRecommended.linuxDownload}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:underline"
+              >
+                Linux
+              </a>
+            ) : null}
+            )
+          </>
+        ) : null}
+        .
       </div>
 
       <div className="flex justify-between mt-10 mb-2 text-xs">

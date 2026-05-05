@@ -7,6 +7,10 @@ const WINDOWS_MASTER = "build_server_windows/master";
 const WINDOWS_FILE = "server.zip";
 const LINUX_MASTER = "build_proot_linux/master";
 const LINUX_FILE = "fx.tar.xz";
+const FIVEM_CHANGELOG_API_WIN =
+  "https://changelogs-live.fivem.net/api/changelog/versions/win32/server";
+const FIVEM_CHANGELOG_API_LINUX =
+  "https://changelogs-live.fivem.net/api/changelog/versions/linux/server";
 
 type ReturnType =
   | {
@@ -34,6 +38,36 @@ export function getAllBrokenArtifacts(): { [key: string]: string } {
   }
 
   return brokenArtifacts;
+}
+
+export async function getFivemOfficialRecommended(): Promise<{
+  version: string;
+  windowsDownload: string | null;
+  linuxDownload: string | null;
+} | null> {
+  try {
+    const [winRes, linuxRes] = await Promise.all([
+      fetch(FIVEM_CHANGELOG_API_WIN, { next: { revalidate: 432000 } }),
+      fetch(FIVEM_CHANGELOG_API_LINUX, { next: { revalidate: 432000 } }),
+    ]);
+    if (!winRes.ok) return null;
+
+    const winData: { recommended?: string; recommended_download?: string } =
+      await winRes.json();
+    if (!winData.recommended) return null;
+
+    const linuxData: { recommended_download?: string } = linuxRes.ok
+      ? await linuxRes.json()
+      : {};
+
+    return {
+      version: winData.recommended,
+      windowsDownload: winData.recommended_download ?? null,
+      linuxDownload: linuxData.recommended_download ?? null,
+    };
+  } catch {
+    return null;
+  }
 }
 
 export async function getRecommendedArtifact(): Promise<ReturnType> {
