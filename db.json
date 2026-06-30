@@ -28,6 +28,7 @@
     "26261-27715": "Issues with building Yarn resources on some Linux servers",
     "27722": "Yarn fails to exit cleanly on Windows",
     "27783-27938": "SIGSEV crashes (issue #3915)",
-    "28626": "Issues with packet loss/timeouts"
+    "28626": "Issues with packet loss/timeouts",
+    "31725": "Failed build"
   }
 }
