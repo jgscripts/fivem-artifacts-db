@@ -23,12 +23,13 @@
     "16276": "Multiple reports of issues loading JS within resources",
     "17462": "Failed build, ignore",
     "21547": "Multiple (unconfirmed) reports of server-sided natives throwing errors or causing crashes; best to avoid",
-    "25943": "Failed build",
     "25839-25988": "Node.js sandboxing seems to be causing issues for people - best to avoid for now",
+    "25943": "Failed build",
     "26261-27715": "Issues with building Yarn resources on some Linux servers",
     "27722": "Yarn fails to exit cleanly on Windows",
     "27783-27938": "SIGSEV crashes (issue #3915)",
     "28626": "Issues with packet loss/timeouts",
+    "31689": "GetVehiclePedIsIn server native returns 0 (citizenfx/fivem#4051)",
     "31725": "Failed build"
   }
 }
