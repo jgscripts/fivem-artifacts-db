@@ -14,6 +14,7 @@
     "12651": "Failed Linux build, ignore",
     "12767": "os.date() appends null terminator; can break Lua scripts",
     "12913-12932": "Causes a crash when restarting Node.js 22",
+    "12913-14177": "High FXServer CPU usage on Linux artifacts; fixed by 14193 (citizenfx/fivem#3222)",
     "12933-13045": "Still crashes (sometimes) when restarting resources due to Node.js 22",
     "13079": "Failed Linux build (works OK if using Windows!)",
     "13380-13458": "Server crashing due to integer encoding (PR#3235)",
