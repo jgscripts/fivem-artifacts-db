@@ -32,6 +32,7 @@
     "27783-27938": "SIGSEV crashes (issue #3915)",
     "28626": "Issues with packet loss/timeouts",
     "31689": "GetVehiclePedIsIn server native returns 0 (citizenfx/fivem#4051)",
-    "31725": "Failed build"
+    "31725": "Failed build",
+    "32698": "Failed Windows build (works OK if using Linux!)"
   }
 }
