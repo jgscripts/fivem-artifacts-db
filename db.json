@@ -33,6 +33,7 @@
     "28626": "Issues with packet loss/timeouts",
     "31689": "GetVehiclePedIsIn server native returns 0 (citizenfx/fivem#4051)",
     "31725": "Failed build",
-    "32698": "Failed Windows build (works OK if using Linux!)"
+    "32698": "Failed Windows build (works OK if using Linux!)",
+    "33230": "Failed Windows build (works OK if using Linux!)"
   }
 }
