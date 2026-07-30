@@ -34,6 +34,8 @@
     "31689": "GetVehiclePedIsIn server native returns 0 (citizenfx/fivem#4051)",
     "31725": "Failed build",
     "32698": "Failed Windows build (works OK if using Linux!)",
-    "33230": "Failed Windows build (works OK if using Linux!)"
+    "33230": "Failed Windows build (works OK if using Linux!)",
+    "33746": "Failed Windows build (works OK if using Linux!)",
+    "33864": "Failed Windows build (works OK if using Linux!)"
   }
 }
