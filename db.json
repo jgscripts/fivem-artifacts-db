@@ -37,6 +37,7 @@
     "33230": "Failed Windows build (works OK if using Linux!)",
     "33746": "Failed Windows build (works OK if using Linux!)",
     "33864": "Failed Windows build (works OK if using Linux!)",
-    "34303": "Failed build, ignore"
+    "34303": "Failed build, ignore",
+    "34410": "Failed build"
   }
 }
