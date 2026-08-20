@@ -2,6 +2,7 @@ import artifactDb from "@/db.json";
 
 const GITHUB_REPO_TAGS =
   "https://api.github.com/repos/citizenfx/fivem/tags?per_page=50";
+export const GITHUB_ARTIFACT_TAGS_CACHE_TAG = "github-artifact-tags";
 const DOWNLOAD_LINK_BASE = "https://runtime.fivem.net/artifacts/fivem";
 const WINDOWS_MASTER = "build_server_windows/master";
 const WINDOWS_FILE = "server.zip";
@@ -43,7 +44,10 @@ export async function getRecommendedArtifact(): Promise<ReturnType> {
 
     // Get git commit sha from tag
     const gitReq = await fetch(GITHUB_REPO_TAGS, {
-      next: { revalidate: 432000 },
+      next: {
+        revalidate: 432000,
+        tags: [GITHUB_ARTIFACT_TAGS_CACHE_TAG],
+      },
     });
     if (!gitReq.ok) return false;
     const gitData: { name: string; commit: { sha: string } }[] =
