@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+
+const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "FiveM Artifacts DB",
@@ -14,11 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://rsms.me/" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-      </head>
-      <body className="bg-zinc-950 text-zinc-200">{children}</body>
+      <body className={`${jakarta.className} bg-zinc-950 text-zinc-200 antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }

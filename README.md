@@ -13,59 +13,7 @@ Please provide some evidence which shows what is broken - a link to a Cfx GitHub
 
 ## API
 
-All endpoints return JSON responses.
-
-### `GET /check`
-
-Check if a specific artifact has any reported issues.
-
-**Query Parameters**
-
-| Parameter  | Type     | Required | Description                    |
-| ---------- | -------- | -------- | ------------------------------ |
-| `artifact` | `string` | Yes      | The artifact number to look up |
-
-**Response**
-
-```json
-{
-  "status": "OK"
-}
-```
-
-```json
-{
-  "status": "BROKEN",
-  "reason": "Description of the issue"
-}
-```
-
-### `GET /jsonv2`
-
-Returns all broken artifacts, download links, and the recommended stable artifact.
-
-**Response**
-
-```json
-{
-  "recommendedArtifact": "12345",
-  "windowsDownloadLink": "https://...",
-  "linuxDownloadLink": "https://...",
-  "brokenArtifacts": [
-    { "artifact": "8509", "reason": "State bags not replicated to clients" },
-    { "artifact": "10268-10309", "reason": "..." }
-  ]
-}
-```
-
-| Field                 | Type                                   | Description                                  |
-| --------------------- | -------------------------------------- | -------------------------------------------- |
-| `recommendedArtifact` | `string`                               | Latest artifact with no reported issues      |
-| `windowsDownloadLink` | `string`                               | Direct download URL for Windows server build |
-| `linuxDownloadLink`   | `string`                               | Direct download URL for Linux server build   |
-| `brokenArtifacts`     | `{artifact: string, reason: string}[]` | Sorted array of artifacts with known issues  |
-
-> **Note:** A legacy endpoint is available at `GET /json` which returns `brokenArtifacts` as an object instead of an array. New integrations should use `/jsonv2`.
+A free JSON API is available for checking artifacts programmatically. See the docs at [artifacts.jgscripts.com/api](https://artifacts.jgscripts.com/api).
 
 ## FiveM Resource
 
