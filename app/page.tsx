@@ -38,7 +38,7 @@ export default async function Home() {
           </p>
         </div>
         <nav className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 whitespace-nowrap text-sm text-zinc-400 sm:justify-start sm:gap-5">
-          <a href={LINKS.guide} target="_blank" className="hover:text-zinc-200">
+          <a href={LINKS.guide} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200">
             Update guide
           </a>
           <Link href="/api" className="hover:text-zinc-200">
@@ -47,6 +47,7 @@ export default async function Home() {
           <a
             href={LINKS.github}
             target="_blank"
+            rel="noopener noreferrer"
             className="hover:text-zinc-200"
           >
             GitHub
@@ -54,6 +55,7 @@ export default async function Home() {
           <a
             href={LINKS.report}
             target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full border border-zinc-700 px-4 py-2 font-semibold text-zinc-300 hover:border-zinc-500"
           >
             Report an issue

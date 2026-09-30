@@ -7,6 +7,7 @@ export default function InfoModal() {
   return (
     <>
       <button
+        type="button"
         onClick={() => ref.current?.showModal()}
         aria-label="How the recommendation works"
         className="flex h-6 w-6 items-center justify-center rounded-full border border-zinc-700 text-xs font-bold text-zinc-500 hover:border-zinc-500 hover:text-zinc-50"
@@ -29,6 +30,7 @@ export default function InfoModal() {
             with no reported issues.
           </p>
           <button
+            type="button"
             onClick={() => ref.current?.close()}
             className="rounded-full bg-zinc-50 px-5 py-2 text-sm font-bold text-zinc-950"
           >
