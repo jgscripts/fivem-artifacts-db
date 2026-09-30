@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
   }
 
   const allBrokenArtifacts = getAllBrokenArtifacts();
-  if (allBrokenArtifacts[artifact]) {
+  if (Object.hasOwn(allBrokenArtifacts, artifact)) {
     return Response.json({
       status: "BROKEN",
       reason: allBrokenArtifacts[artifact],

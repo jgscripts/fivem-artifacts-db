@@ -5,7 +5,7 @@ import {
   coveringEntry,
   downloadLinks,
   entries,
-  fetchCommitDate,
+  fetchCommitDates,
   fetchTagPage,
   fetchTagSha,
   localLookup,
@@ -138,11 +138,12 @@ export default function ArtifactTable({ latest, recommended }: Props) {
     setResult(null);
     if (!query.trim()) return;
     let stale = false;
+    const controller = new AbortController();
     const timer = setTimeout(async () => {
       const local = localLookup(liveLatest, query.trim());
       const cell: Cell =
         typeof local === "number"
-          ? await fetchTagSha(local)
+          ? await fetchTagSha(local, controller.signal)
               .then((sha) =>
                 sha
                   ? { label: String(local), tag: "OK" as const, desc: "No reported issues", n: local, sha }
@@ -163,6 +164,7 @@ export default function ArtifactTable({ latest, recommended }: Props) {
     return () => {
       stale = true;
       clearTimeout(timer);
+      controller.abort();
     };
   }, [query, liveLatest, recommended]);
 
@@ -194,16 +196,11 @@ export default function ArtifactTable({ latest, recommended }: Props) {
     );
     if (!shas.length) return;
     shas.forEach((sha) => dateFetches.current.add(sha));
-    let stale = false;
-    Promise.all(shas.map((sha) => fetchCommitDate(sha).then((d) => [sha, d] as const))).then(
-      (pairs) => {
-        const found = pairs.filter(([, d]) => d) as [string, string][];
-        if (!stale && found.length) setDates((d) => ({ ...d, ...Object.fromEntries(found) }));
-      }
-    );
-    return () => {
-      stale = true;
-    };
+    fetchCommitDates(shas)
+      .then((found) => {
+        setDates((dates) => ({ ...dates, ...found }));
+      })
+      .catch(() => {});
   });
 
   return (
@@ -212,6 +209,7 @@ export default function ArtifactTable({ latest, recommended }: Props) {
         <div className="inline-flex rounded-full border border-zinc-800 p-1">
           {(["all", "issues"] as const).map((v) => (
             <button
+              type="button"
               key={v}
               onClick={() => {
                 setView(v);
@@ -227,6 +225,7 @@ export default function ArtifactTable({ latest, recommended }: Props) {
           <label className="flex cursor-pointer items-center gap-2.5 text-sm text-zinc-400">
             Failed builds
             <button
+              type="button"
               role="switch"
               aria-checked={showFailed}
               onClick={() => {
@@ -243,6 +242,7 @@ export default function ArtifactTable({ latest, recommended }: Props) {
           <div className="flex w-44 items-center gap-2 rounded-full border border-zinc-800 px-3.5 py-1.5 focus-within:border-zinc-600">
             <SearchIcon className="h-3.5 w-3.5 shrink-0 stroke-zinc-600" />
             <input
+              aria-label="Search artifacts"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search"
