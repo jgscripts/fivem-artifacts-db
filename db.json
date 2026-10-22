@@ -39,6 +39,7 @@
     "33864": "Failed Windows build (works OK if using Linux!)",
     "34303": "Failed build, ignore",
     "34410": "Failed build",
-    "35186-35214": "Lua io.readdir directory iteration errors"
+    "35186-35214": "Lua io.readdir directory iteration errors",
+    "37346-37437": "Linux server crashes when starting escrow-protected resources; resolved in 37474."
   }
 }
