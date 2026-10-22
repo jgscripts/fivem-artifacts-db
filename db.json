@@ -43,6 +43,7 @@
     "35636": "Windows server can hang under weaponDamageEvent flooding (issue #4239)",
     "36727": "Linux build download unavailable (Windows download is available)",
     "36897": "Network-thread hitches and mass timeouts under reliable-queue pressure on 36897 (issue #4244, PR #4242).",
-    "37346-37437": "Linux server crashes when starting escrow-protected resources; resolved in 37474."
+    "37346-37437": "Linux server crashes when starting escrow-protected resources; resolved in 37474.",
+    "37739": "Failed build, ignore"
   }
 }
