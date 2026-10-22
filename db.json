@@ -40,6 +40,7 @@
     "34303": "Failed build, ignore",
     "34410": "Failed build",
     "35186-35214": "Lua io.readdir directory iteration errors",
-    "36897": "Network-thread hitches and mass timeouts under reliable-queue pressure on 36897 (issue #4244, PR #4242)."
+    "36897": "Network-thread hitches and mass timeouts under reliable-queue pressure on 36897 (issue #4244, PR #4242).",
+    "37346-37437": "Linux server crashes when starting escrow-protected resources; resolved in 37474."
   }
 }
