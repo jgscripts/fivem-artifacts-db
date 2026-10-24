@@ -20,6 +20,7 @@ export default function Pager({ page, count, hasMore, onChange }: Props) {
   return (
     <nav aria-label="Pages" className="mt-5 flex items-center justify-center gap-2">
       <button
+        type="button"
         disabled={page === 1}
         onClick={() => onChange(page - 1)}
         aria-label="Previous page"
@@ -34,6 +35,7 @@ export default function Pager({ page, count, hasMore, onChange }: Props) {
           </span>
         ) : (
           <button
+            type="button"
             key={p}
             onClick={() => onChange(p)}
             aria-current={p === page ? "page" : undefined}
@@ -45,6 +47,7 @@ export default function Pager({ page, count, hasMore, onChange }: Props) {
       )}
       {hasMore && <span className="px-1 text-sm text-zinc-500">…</span>}
       <button
+        type="button"
         disabled={page >= count && !hasMore}
         onClick={() => onChange(page + 1)}
         aria-label="Next page"

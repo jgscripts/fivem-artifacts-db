@@ -151,6 +151,7 @@ export default function ApiPage() {
         <a
           href="https://github.com/jgscripts/jg-artifactcheck"
           target="_blank"
+          rel="noopener noreferrer"
           className="text-zinc-300 underline decoration-zinc-600 underline-offset-2 hover:text-zinc-50"
         >
           jg-artifactcheck

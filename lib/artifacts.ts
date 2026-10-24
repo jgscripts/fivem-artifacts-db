@@ -2,8 +2,9 @@ import db from "@/db.json";
 
 export const PAGE_SIZE = 10;
 export const TAGS_URL = "https://api.github.com/repos/citizenfx/fivem/tags";
-const REF_URL = "https://api.github.com/repos/citizenfx/fivem/git/ref/tags/";
+export const REF_URL = "https://api.github.com/repos/citizenfx/fivem/git/ref/tags/";
 export const COMMITS_URL = "https://api.github.com/repos/citizenfx/fivem/commits/";
+export const GIT_TAGS_URL = "https://api.github.com/repos/citizenfx/fivem/git/tags/";
 const DOWNLOAD_BASE = "https://runtime.fivem.net/artifacts/fivem";
 const TAG_PREFIX = "v1.0.0.";
 const FAILED_BUILD = /failed.*build/i;
@@ -92,27 +93,30 @@ export const formatDate = (iso: string) =>
     year: "numeric",
   });
 
-export async function fetchTagPage(page: number): Promise<TagPage> {
-  const res = await fetch(`${TAGS_URL}?per_page=100&page=${page}`);
+export async function fetchTagPage(page: number, signal?: AbortSignal): Promise<TagPage> {
+  const res = await fetch(`/api/artifact-data/tags?page=${page}`, { signal });
   assertOk(res);
-  return { list: parseTagList(await res.json()), last: parseLastPage(res.headers.get("link")) };
+  return res.json();
 }
 
-export async function fetchCommitDate(sha: string): Promise<string | null> {
-  const res = await fetch(`${COMMITS_URL}${sha}`);
-  if (!res.ok) return null;
-  const date = (await res.json()).commit?.committer?.date;
-  return date ? formatDate(date) : null;
+export async function fetchCommitDates(
+  shas: string[],
+  signal?: AbortSignal
+): Promise<Record<string, string>> {
+  if (!shas.length) return {};
+  const params = new URLSearchParams();
+  shas.forEach((sha) => params.append("sha", sha));
+  const res = await fetch(`/api/artifact-data/dates?${params}`, { signal });
+  assertOk(res);
+  const dates: Record<string, string | null> = await res.json();
+  return Object.fromEntries(
+    Object.entries(dates).flatMap(([sha, date]) => (date ? [[sha, formatDate(date)]] : []))
+  );
 }
 
-export async function fetchTagSha(artifact: number): Promise<string | null> {
-  const res = await fetch(`${REF_URL}${TAG_PREFIX}${artifact}`);
+export async function fetchTagSha(artifact: number, signal?: AbortSignal): Promise<string | null> {
+  const res = await fetch(`/api/artifact-data/sha?artifact=${artifact}`, { signal });
   if (res.status === 404) return null;
   assertOk(res);
-  let { object } = await res.json();
-  if (object?.type === "tag") {
-    const tagRes = await fetch(object.url);
-    object = tagRes.ok ? (await tagRes.json()).object : null;
-  }
-  return object?.sha ?? null;
+  return (await res.json()).sha ?? null;
 }

@@ -9,17 +9,18 @@ export type Artifacts = {
   recommendedSha: string;
 };
 
-export function getAllBrokenArtifacts(): Record<string, string> {
-  const broken: Record<string, string> = {};
-  for (const [key, reason] of Object.entries(db.brokenArtifacts)) {
-    if (key.includes("-")) {
-      const [lo, hi] = key.split("-").map(Number);
-      for (let i = lo; i <= hi; i++) broken[i] = reason;
-    } else {
-      broken[key] = reason;
-    }
+const ALL_BROKEN_ARTIFACTS: Record<string, string> = Object.create(null);
+for (const [key, reason] of Object.entries(db.brokenArtifacts)) {
+  if (key.includes("-")) {
+    const [lo, hi] = key.split("-").map(Number);
+    for (let i = lo; i <= hi; i++) ALL_BROKEN_ARTIFACTS[i] = reason;
+  } else {
+    ALL_BROKEN_ARTIFACTS[key] = reason;
   }
-  return broken;
+}
+
+export function getAllBrokenArtifacts(): Record<string, string> {
+  return ALL_BROKEN_ARTIFACTS;
 }
 
 export async function getArtifacts(): Promise<Artifacts | false> {
